@@ -32,7 +32,7 @@ Description
 
 Create an application that can read in commands of the following (textual) form:
 
-    PLACE X,Y,F
+    PLACE X Y F
     MOVE
     LEFT
     RIGHT
@@ -70,27 +70,27 @@ Example Input and Output
 
 ### Example a
 
-    PLACE 0,0,NORTH
+    PLACE 0 0 NORTH
     MOVE
     REPORT
 
 Expected output:
 
-    0,1,NORTH
+    0 1 NORTH
 
 ### Example b
 
-    PLACE 0,0,NORTH
+    PLACE 0 0 NORTH
     LEFT
     REPORT
 
 Expected output:
 
-    0,0,WEST
+    0 0 WEST
 
 ### Example c
 
-    PLACE 1,2,EAST
+    PLACE 1 2 EAST
     MOVE
     MOVE
     LEFT
@@ -99,4 +99,4 @@ Expected output:
 
 Expected output
 
-    3,3,NORTH
+    3 3 NORTH

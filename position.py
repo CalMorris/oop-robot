@@ -1,9 +1,8 @@
 class Position():
-
     x: int = 0
     y: int = 0
-    max_y: int
     max_x: int
+    max_y: int
 
     def get_x(self):
         return self.x
@@ -25,15 +24,23 @@ class Position():
 
     def can_update_position(self, new_value: int, max_value: int):
         """
-        Check the new value is between 0 and the max_value for the table.
+        Check the new value is between 0 and the max_value of the table length/width.
+
+
+        :param new_value: The desired value to update the position to.
+        :return: Boolean -> can position be updated.
         """
-        if new_value >=  0 and new_value <= max_value:
+        if new_value >= 0 and new_value <= max_value:
             return True
         return False
 
-    def update_position(self, x_point, y_point):
+    def update_position(self, x_point: int, y_point: int):
         """
-        Update the x and y position if the values are within the table boundaries.
+        Update the X and Y position if the values are within the table boundaries.
+
+        :param x: Positive or negative integer to update the current position
+        :param y: Positive or negative integer to update the current position
+        :return: None -> implicit
         """
         new_x = self.get_x() + x_point
         new_y = self.get_y() + y_point

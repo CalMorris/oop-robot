@@ -1,8 +1,5 @@
 class Direction():
-
     direction: str
-    # def __init__(self, direction):
-    #     self.direction: str = direction
 
     def get_direction(self):
         return self.direction
@@ -10,34 +7,38 @@ class Direction():
     def set_direction(self, direction):
         self.direction = direction
 
-    def update_direction(self, direction):
+    def update_direction(self, direction: str):
         """
-        Currently this is a very gross way of setting and updating the direction that the robot is going to face
-        There is probably a better mathematical way of doing this ie. string value -> int representation or vice versa
+        Rotate the direction of the robot by 90 degrees to the LEFT | RIGHT
+
+        :param direction: The required change in direction. Example: LEFT | RIGHT
+        :return: Updated direction
+
+        TODO: Find a better implementation of changing the direction of the robot
         """
-        if (direction.upper == 'LEFT'):
-            if self.direction == 'NORTH':
-                self.set_direction('WEST')
+        if (direction == 'LEFT'):
+            if self.get_direction() == 'NORTH':
+                return self.set_direction('WEST')
 
-            if self.direction == 'EAST':
-                self.set_direction('SOUTH')
+            if self.get_direction() == 'EAST':
+                return self.set_direction('SOUTH')
 
-            if self.direction == 'SOUTH':
-                self.set_direction('EAST')
+            if self.get_direction() == 'SOUTH':
+                return self.set_direction('EAST')
 
-            if self.direction == 'WEST':
-                self.set_direction('NORTH')
+            if self.get_direction() == 'WEST':
+                return self.set_direction('NORTH')
 
-        if (direction.upper == 'RIGHT'):
-            if self.direction == 'NORTH':
-                self.set_direction('EAST')
+        if (direction == 'RIGHT'):
+            if self.get_direction() == 'NORTH':
+                return self.set_direction('EAST')
 
-            if self.direction == 'EAST':
-                self.set_direction('SOUTH')
+            if self.get_direction() == 'EAST':
+                return self.set_direction('SOUTH')
 
-            if self.direction == 'SOUTH':
-                self.set_direction('WEST')
+            if self.get_direction() == 'SOUTH':
+                return self.set_direction('WEST')
 
-            if self.direction == 'WEST':
-                self.set_direction('NORTH')
+            if self.get_direction() == 'WEST':
+                return self.set_direction('NORTH')
 
