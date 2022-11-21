@@ -80,6 +80,3 @@ class Simulator(Robot):
 
         # Once the report is requested, the user will have an output of the location and direction that the robot is facing
         self.report_robot_position_direction()
-
-simulator = Simulator()
-simulator.start()
