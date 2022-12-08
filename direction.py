@@ -1,5 +1,8 @@
-class Direction():
-    direction: str
+from constants import RIGHT_DIRECTION_MAP, LEFT_DIRECTION_MAP
+
+class Direction:
+    def __init__(self, direction):
+        self.direction: str = direction
 
     def get_direction(self):
         return self.direction
@@ -7,38 +10,10 @@ class Direction():
     def set_direction(self, direction):
         self.direction = direction
 
-    def update_direction(self, direction: str):
-        """
-        Rotate the direction of the robot by 90 degrees to the LEFT | RIGHT
+    def turn_left(self):
+        direction = self.get_direction()
+        return self.set_direction(LEFT_DIRECTION_MAP[direction])
 
-        :param direction: The required change in direction. Example: LEFT | RIGHT
-        :return: Updated direction
-
-        TODO: Find a better implementation of changing the direction of the robot
-        """
-        if (direction == 'LEFT'):
-            if self.get_direction() == 'NORTH':
-                return self.set_direction('WEST')
-
-            if self.get_direction() == 'EAST':
-                return self.set_direction('SOUTH')
-
-            if self.get_direction() == 'SOUTH':
-                return self.set_direction('EAST')
-
-            if self.get_direction() == 'WEST':
-                return self.set_direction('NORTH')
-
-        if (direction == 'RIGHT'):
-            if self.get_direction() == 'NORTH':
-                return self.set_direction('EAST')
-
-            if self.get_direction() == 'EAST':
-                return self.set_direction('SOUTH')
-
-            if self.get_direction() == 'SOUTH':
-                return self.set_direction('WEST')
-
-            if self.get_direction() == 'WEST':
-                return self.set_direction('NORTH')
-
+    def turn_right(self):
+        direction = self.get_direction()
+        return self.set_direction(RIGHT_DIRECTION_MAP[direction])

@@ -8,7 +8,7 @@ If you want to use a virtual environment to run the file:
 ```
 python3 -m venv .venv
 source .venv/vin/activate
-python3 run_simulator.py
+python3 api.py
 ```
 
 #### Requirements
