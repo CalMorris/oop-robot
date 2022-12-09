@@ -7,13 +7,10 @@ class Direction:
     def get_direction(self):
         return self.direction
 
-    def set_direction(self, direction):
-        self.direction = direction
-
     def turn_left(self):
-        direction = self.get_direction()
-        return self.set_direction(LEFT_DIRECTION_MAP[direction])
+        self.direction = LEFT_DIRECTION_MAP[self.direction]
+        return self.direction
 
     def turn_right(self):
-        direction = self.get_direction()
-        return self.set_direction(RIGHT_DIRECTION_MAP[direction])
+        self.direction = RIGHT_DIRECTION_MAP[self.direction]
+        return self.direction

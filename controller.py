@@ -1,19 +1,15 @@
-from table_top import TableTop
 from robot import Robot
 
 class Controller:
-    def __init__(self):
-        self.table_top = TableTop()
-        self.robot = Robot()
+    def __init__(self, robot):
+        self.robot = robot
 
     def execute(self, command, kwargs):
 
         if command == 'PLACE':
-            return self.robot.place(
-                max_x = self.table_top.get_width(),
-                max_y = self.table_top.get_length(),
-                **kwargs
-            )
+            #No longer passing the tabletop values to the robot becaus the robot now knows about the tabletop its sitting on.
+            #This is not necessarily the best approach, just my opnion.
+            return self.robot.place(**kwargs)
 
         if command == 'LEFT':
             return self.robot.turn_left()
