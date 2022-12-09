@@ -13,32 +13,31 @@ class Position():
     def get_y(self):
         return self.y
 
-    def set_x(self, x):
-        self.x = x
-
-    def set_y(self, y):
-        self.y = y
-
     def update_position(self, direction):
 
-        x_diff, y_diff = CARDINAL_VALUE[direction]
+        try:
+            new_x, new_y = self.__can_update_position(direction)
+            self.x = new_x
+            self.y = new_y
+        except OutOfBoundsException as e:
+            print(e.message)
+        
 
-        new_x = self.get_x() + x_diff
-        new_y = self.get_y() + y_diff
+    def __can_update_position(self, direction): #double __ prefix makes this a private method. calling outside this class will raise and exception
+        
+        x_diff, y_diff = CARDINAL_VALUE[direction.get_direction()]
 
-        if self.can_update_position(new_x, self.max_x):
-            self.set_x(new_x)
+        new_x = self.x + x_diff
+        new_y = self.y + y_diff
 
-        if self.can_update_position(new_y, self.max_y):
-            self.set_y(new_y)
+        if new_x == self.x and new_y == self.y :
+            return new_x, new_y
+       
+        if new_x <= self.max_x and new_x >= 0 and new_y <= self.max_y and new_y >= 0:
+            return new_x, new_y
 
+        raise OutOfBoundsException()
 
-    def can_update_position(self, new_value: int, max_value: int):
-        """
-        Check the new value is between 0 and the max_value of the table length/width.
-        :param new_value: The desired value to update the position to.
-        :return: Boolean -> can position be updated.
-        """
-        if new_value >= 0 and new_value <= max_value:
-            return True
-        return False
+class OutOfBoundsException(Exception):
+    def __init__(self, message="Can not move to new position as out of bounds"):
+        self.message = message
